@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 
 // Deterministic pseudo-random so SSR and client render identically.
+// Rounded to avoid float drift between JS engines (Math.sin precision).
 function seeded(n: number) {
   const x = Math.sin(n * 12.9898) * 43758.5453;
-  return x - Math.floor(x);
+  return Math.round((x - Math.floor(x)) * 1000) / 1000;
 }
 
 // A calm animated observatory globe: rotating meridians, golden network
@@ -15,7 +16,7 @@ export function Globe({ size = 340 }: { size?: number }) {
         id: i,
         x: seeded(i + 1) * 100,
         y: seeded(i + 11) * 100,
-        r: seeded(i + 23) * 1.4 + 0.3,
+        r: Math.round((seeded(i + 23) * 1.4 + 0.3) * 100) / 100,
         d: seeded(i + 37) * 4,
       })),
     [],
