@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TreasuryRouteImport } from './routes/treasury'
 import { Route as TaxationRouteImport } from './routes/taxation'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ProjectsRouteImport } from './routes/projects'
@@ -35,6 +36,11 @@ const TreasuryRoute = TreasuryRouteImport.update({
 const TaxationRoute = TaxationRouteImport.update({
   id: '/taxation',
   path: '/taxation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SettingsRoute = SettingsRouteImport.update({
@@ -129,6 +135,7 @@ export interface FileRoutesByFullPath {
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -148,6 +155,7 @@ export interface FileRoutesByTo {
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -168,6 +176,7 @@ export interface FileRoutesById {
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
   '/settings': typeof SettingsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/reports'
     | '/settings'
+    | '/sitemap.xml'
     | '/taxation'
     | '/treasury'
   fileRoutesByTo: FileRoutesByTo
@@ -208,6 +218,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/reports'
     | '/settings'
+    | '/sitemap.xml'
     | '/taxation'
     | '/treasury'
   id:
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/projects'
     | '/reports'
     | '/settings'
+    | '/sitemap.xml'
     | '/taxation'
     | '/treasury'
   fileRoutesById: FileRoutesById
@@ -247,6 +259,7 @@ export interface RootRouteChildren {
   ProjectsRoute: typeof ProjectsRoute
   ReportsRoute: typeof ReportsRoute
   SettingsRoute: typeof SettingsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TaxationRoute: typeof TaxationRoute
   TreasuryRoute: typeof TreasuryRoute
 }
@@ -265,6 +278,13 @@ declare module '@tanstack/react-router' {
       path: '/taxation'
       fullPath: '/taxation'
       preLoaderRoute: typeof TaxationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -391,6 +411,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProjectsRoute: ProjectsRoute,
   ReportsRoute: ReportsRoute,
   SettingsRoute: SettingsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TaxationRoute: TaxationRoute,
   TreasuryRoute: TreasuryRoute,
 }
