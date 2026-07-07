@@ -1,5 +1,11 @@
 import { useMemo } from "react";
 
+// Deterministic pseudo-random so SSR and client render identically.
+function seeded(n: number) {
+  const x = Math.sin(n * 12.9898) * 43758.5453;
+  return x - Math.floor(x);
+}
+
 // A calm animated observatory globe: rotating meridians, golden network
 // lines linking continents, and a soft constellation field. Pure SVG/CSS.
 export function Globe({ size = 340 }: { size?: number }) {
@@ -7,10 +13,10 @@ export function Globe({ size = 340 }: { size?: number }) {
     () =>
       Array.from({ length: 46 }, (_, i) => ({
         id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        r: Math.random() * 1.4 + 0.3,
-        d: Math.random() * 4,
+        x: seeded(i + 1) * 100,
+        y: seeded(i + 11) * 100,
+        r: seeded(i + 23) * 1.4 + 0.3,
+        d: seeded(i + 37) * 4,
       })),
     [],
   );
