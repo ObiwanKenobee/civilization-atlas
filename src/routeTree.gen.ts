@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TreasuryRouteImport } from './routes/treasury'
 import { Route as TaxationRouteImport } from './routes/taxation'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as OracleRouteImport } from './routes/oracle'
 import { Route as NaturalCapitalRouteImport } from './routes/natural-capital'
@@ -33,6 +34,11 @@ const TreasuryRoute = TreasuryRouteImport.update({
 const TaxationRoute = TaxationRouteImport.update({
   id: '/taxation',
   path: '/taxation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -115,6 +121,7 @@ export interface FileRoutesByFullPath {
   '/natural-capital': typeof NaturalCapitalRoute
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
+  '/reports': typeof ReportsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/natural-capital': typeof NaturalCapitalRoute
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
+  '/reports': typeof ReportsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -150,6 +158,7 @@ export interface FileRoutesById {
   '/natural-capital': typeof NaturalCapitalRoute
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
+  '/reports': typeof ReportsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/natural-capital'
     | '/oracle'
     | '/projects'
+    | '/reports'
     | '/taxation'
     | '/treasury'
   fileRoutesByTo: FileRoutesByTo
@@ -186,6 +196,7 @@ export interface FileRouteTypes {
     | '/natural-capital'
     | '/oracle'
     | '/projects'
+    | '/reports'
     | '/taxation'
     | '/treasury'
   id:
@@ -203,6 +214,7 @@ export interface FileRouteTypes {
     | '/natural-capital'
     | '/oracle'
     | '/projects'
+    | '/reports'
     | '/taxation'
     | '/treasury'
   fileRoutesById: FileRoutesById
@@ -221,6 +233,7 @@ export interface RootRouteChildren {
   NaturalCapitalRoute: typeof NaturalCapitalRoute
   OracleRoute: typeof OracleRoute
   ProjectsRoute: typeof ProjectsRoute
+  ReportsRoute: typeof ReportsRoute
   TaxationRoute: typeof TaxationRoute
   TreasuryRoute: typeof TreasuryRoute
 }
@@ -239,6 +252,13 @@ declare module '@tanstack/react-router' {
       path: '/taxation'
       fullPath: '/taxation'
       preLoaderRoute: typeof TaxationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -349,6 +369,7 @@ const rootRouteChildren: RootRouteChildren = {
   NaturalCapitalRoute: NaturalCapitalRoute,
   OracleRoute: OracleRoute,
   ProjectsRoute: ProjectsRoute,
+  ReportsRoute: ReportsRoute,
   TaxationRoute: TaxationRoute,
   TreasuryRoute: TreasuryRoute,
 }
