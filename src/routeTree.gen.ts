@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TreasuryRouteImport } from './routes/treasury'
 import { Route as TaxationRouteImport } from './routes/taxation'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as OracleRouteImport } from './routes/oracle'
@@ -34,6 +35,11 @@ const TreasuryRoute = TreasuryRouteImport.update({
 const TaxationRoute = TaxationRouteImport.update({
   id: '/taxation',
   path: '/taxation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReportsRoute = ReportsRouteImport.update({
@@ -122,6 +128,7 @@ export interface FileRoutesByFullPath {
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -140,6 +147,7 @@ export interface FileRoutesByTo {
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/oracle': typeof OracleRoute
   '/projects': typeof ProjectsRoute
   '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
   '/taxation': typeof TaxationRoute
   '/treasury': typeof TreasuryRoute
 }
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/oracle'
     | '/projects'
     | '/reports'
+    | '/settings'
     | '/taxation'
     | '/treasury'
   fileRoutesByTo: FileRoutesByTo
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/oracle'
     | '/projects'
     | '/reports'
+    | '/settings'
     | '/taxation'
     | '/treasury'
   id:
@@ -215,6 +226,7 @@ export interface FileRouteTypes {
     | '/oracle'
     | '/projects'
     | '/reports'
+    | '/settings'
     | '/taxation'
     | '/treasury'
   fileRoutesById: FileRoutesById
@@ -234,6 +246,7 @@ export interface RootRouteChildren {
   OracleRoute: typeof OracleRoute
   ProjectsRoute: typeof ProjectsRoute
   ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
   TaxationRoute: typeof TaxationRoute
   TreasuryRoute: typeof TreasuryRoute
 }
@@ -252,6 +265,13 @@ declare module '@tanstack/react-router' {
       path: '/taxation'
       fullPath: '/taxation'
       preLoaderRoute: typeof TaxationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reports': {
@@ -370,6 +390,7 @@ const rootRouteChildren: RootRouteChildren = {
   OracleRoute: OracleRoute,
   ProjectsRoute: ProjectsRoute,
   ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
   TaxationRoute: TaxationRoute,
   TreasuryRoute: TreasuryRoute,
 }
