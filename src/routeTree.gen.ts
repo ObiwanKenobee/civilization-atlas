@@ -9,8 +9,92 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TreasuryRouteImport } from './routes/treasury'
+import { Route as TaxationRouteImport } from './routes/taxation'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as OracleRouteImport } from './routes/oracle'
+import { Route as NaturalCapitalRouteImport } from './routes/natural-capital'
+import { Route as MarketplaceRouteImport } from './routes/marketplace'
+import { Route as InfrastructureRouteImport } from './routes/infrastructure'
+import { Route as ImpactRouteImport } from './routes/impact'
+import { Route as GovernanceRouteImport } from './routes/governance'
+import { Route as ForecastsRouteImport } from './routes/forecasts'
+import { Route as FlourishingRouteImport } from './routes/flourishing'
+import { Route as CitizensRouteImport } from './routes/citizens'
+import { Route as BudgetRouteImport } from './routes/budget'
+import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TreasuryRoute = TreasuryRouteImport.update({
+  id: '/treasury',
+  path: '/treasury',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TaxationRoute = TaxationRouteImport.update({
+  id: '/taxation',
+  path: '/taxation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OracleRoute = OracleRouteImport.update({
+  id: '/oracle',
+  path: '/oracle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NaturalCapitalRoute = NaturalCapitalRouteImport.update({
+  id: '/natural-capital',
+  path: '/natural-capital',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketplaceRoute = MarketplaceRouteImport.update({
+  id: '/marketplace',
+  path: '/marketplace',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InfrastructureRoute = InfrastructureRouteImport.update({
+  id: '/infrastructure',
+  path: '/infrastructure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GovernanceRoute = GovernanceRouteImport.update({
+  id: '/governance',
+  path: '/governance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForecastsRoute = ForecastsRouteImport.update({
+  id: '/forecasts',
+  path: '/forecasts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FlourishingRoute = FlourishingRouteImport.update({
+  id: '/flourishing',
+  path: '/flourishing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CitizensRoute = CitizensRouteImport.update({
+  id: '/citizens',
+  path: '/citizens',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudgetRoute = BudgetRouteImport.update({
+  id: '/budget',
+  path: '/budget',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasRoute = AtlasRouteImport.update({
+  id: '/atlas',
+  path: '/atlas',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +103,228 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
+  '/budget': typeof BudgetRoute
+  '/citizens': typeof CitizensRoute
+  '/flourishing': typeof FlourishingRoute
+  '/forecasts': typeof ForecastsRoute
+  '/governance': typeof GovernanceRoute
+  '/impact': typeof ImpactRoute
+  '/infrastructure': typeof InfrastructureRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/natural-capital': typeof NaturalCapitalRoute
+  '/oracle': typeof OracleRoute
+  '/projects': typeof ProjectsRoute
+  '/taxation': typeof TaxationRoute
+  '/treasury': typeof TreasuryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
+  '/budget': typeof BudgetRoute
+  '/citizens': typeof CitizensRoute
+  '/flourishing': typeof FlourishingRoute
+  '/forecasts': typeof ForecastsRoute
+  '/governance': typeof GovernanceRoute
+  '/impact': typeof ImpactRoute
+  '/infrastructure': typeof InfrastructureRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/natural-capital': typeof NaturalCapitalRoute
+  '/oracle': typeof OracleRoute
+  '/projects': typeof ProjectsRoute
+  '/taxation': typeof TaxationRoute
+  '/treasury': typeof TreasuryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas': typeof AtlasRoute
+  '/budget': typeof BudgetRoute
+  '/citizens': typeof CitizensRoute
+  '/flourishing': typeof FlourishingRoute
+  '/forecasts': typeof ForecastsRoute
+  '/governance': typeof GovernanceRoute
+  '/impact': typeof ImpactRoute
+  '/infrastructure': typeof InfrastructureRoute
+  '/marketplace': typeof MarketplaceRoute
+  '/natural-capital': typeof NaturalCapitalRoute
+  '/oracle': typeof OracleRoute
+  '/projects': typeof ProjectsRoute
+  '/taxation': typeof TaxationRoute
+  '/treasury': typeof TreasuryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atlas'
+    | '/budget'
+    | '/citizens'
+    | '/flourishing'
+    | '/forecasts'
+    | '/governance'
+    | '/impact'
+    | '/infrastructure'
+    | '/marketplace'
+    | '/natural-capital'
+    | '/oracle'
+    | '/projects'
+    | '/taxation'
+    | '/treasury'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atlas'
+    | '/budget'
+    | '/citizens'
+    | '/flourishing'
+    | '/forecasts'
+    | '/governance'
+    | '/impact'
+    | '/infrastructure'
+    | '/marketplace'
+    | '/natural-capital'
+    | '/oracle'
+    | '/projects'
+    | '/taxation'
+    | '/treasury'
+  id:
+    | '__root__'
+    | '/'
+    | '/atlas'
+    | '/budget'
+    | '/citizens'
+    | '/flourishing'
+    | '/forecasts'
+    | '/governance'
+    | '/impact'
+    | '/infrastructure'
+    | '/marketplace'
+    | '/natural-capital'
+    | '/oracle'
+    | '/projects'
+    | '/taxation'
+    | '/treasury'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasRoute: typeof AtlasRoute
+  BudgetRoute: typeof BudgetRoute
+  CitizensRoute: typeof CitizensRoute
+  FlourishingRoute: typeof FlourishingRoute
+  ForecastsRoute: typeof ForecastsRoute
+  GovernanceRoute: typeof GovernanceRoute
+  ImpactRoute: typeof ImpactRoute
+  InfrastructureRoute: typeof InfrastructureRoute
+  MarketplaceRoute: typeof MarketplaceRoute
+  NaturalCapitalRoute: typeof NaturalCapitalRoute
+  OracleRoute: typeof OracleRoute
+  ProjectsRoute: typeof ProjectsRoute
+  TaxationRoute: typeof TaxationRoute
+  TreasuryRoute: typeof TreasuryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/treasury': {
+      id: '/treasury'
+      path: '/treasury'
+      fullPath: '/treasury'
+      preLoaderRoute: typeof TreasuryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/taxation': {
+      id: '/taxation'
+      path: '/taxation'
+      fullPath: '/taxation'
+      preLoaderRoute: typeof TaxationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oracle': {
+      id: '/oracle'
+      path: '/oracle'
+      fullPath: '/oracle'
+      preLoaderRoute: typeof OracleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/natural-capital': {
+      id: '/natural-capital'
+      path: '/natural-capital'
+      fullPath: '/natural-capital'
+      preLoaderRoute: typeof NaturalCapitalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketplace': {
+      id: '/marketplace'
+      path: '/marketplace'
+      fullPath: '/marketplace'
+      preLoaderRoute: typeof MarketplaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/infrastructure': {
+      id: '/infrastructure'
+      path: '/infrastructure'
+      fullPath: '/infrastructure'
+      preLoaderRoute: typeof InfrastructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/governance': {
+      id: '/governance'
+      path: '/governance'
+      fullPath: '/governance'
+      preLoaderRoute: typeof GovernanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forecasts': {
+      id: '/forecasts'
+      path: '/forecasts'
+      fullPath: '/forecasts'
+      preLoaderRoute: typeof ForecastsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/flourishing': {
+      id: '/flourishing'
+      path: '/flourishing'
+      fullPath: '/flourishing'
+      preLoaderRoute: typeof FlourishingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/citizens': {
+      id: '/citizens'
+      path: '/citizens'
+      fullPath: '/citizens'
+      preLoaderRoute: typeof CitizensRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budget': {
+      id: '/budget'
+      path: '/budget'
+      fullPath: '/budget'
+      preLoaderRoute: typeof BudgetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas': {
+      id: '/atlas'
+      path: '/atlas'
+      fullPath: '/atlas'
+      preLoaderRoute: typeof AtlasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +337,21 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasRoute: AtlasRoute,
+  BudgetRoute: BudgetRoute,
+  CitizensRoute: CitizensRoute,
+  FlourishingRoute: FlourishingRoute,
+  ForecastsRoute: ForecastsRoute,
+  GovernanceRoute: GovernanceRoute,
+  ImpactRoute: ImpactRoute,
+  InfrastructureRoute: InfrastructureRoute,
+  MarketplaceRoute: MarketplaceRoute,
+  NaturalCapitalRoute: NaturalCapitalRoute,
+  OracleRoute: OracleRoute,
+  ProjectsRoute: ProjectsRoute,
+  TaxationRoute: TaxationRoute,
+  TreasuryRoute: TreasuryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
